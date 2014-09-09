@@ -12,7 +12,6 @@ app.post('/hook', function(req,res){
 	var pulls_url = req.body.repository.pulls_url.split('{/number}')[0]
 	requests.parsePulls(pulls_url,function(pull){
 		console.log(pull.mergable)
-		console.log(https://api.github.com/repos/mrmakeit/github-todo-test/issues/14/comments)
 		if(pull.mergable==false){
 			requests.rebaseComment(pull._links.comments.href);
 		}
