@@ -15,7 +15,6 @@ var parsePulls = function(url,cb){
 		var pulls = JSON.parse(body);
 		pulls.forEach(function(pull,index){
 			request({url:url+"/"+pull.number, headers: {'User-Agent': 'github-cleanpr'}},function(err,res,body){
-				console.log(JSON.parse(body));
 				cb(JSON.parse(body));
 			}) })
 	})
