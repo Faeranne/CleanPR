@@ -13,7 +13,6 @@ var parsePulls = function(url,cb){
 	request({url:url, headers: {'User-Agent': 'github-cleanpr'}}, function(err,res,body){
 		var pulls = JSON.parse(body);
 		pulls.forEach(function(pull,index){
-			console.log(url+"/"+pull.number)
 			request({url:url+"/"+pull.number, headers: {'User-Agent': 'github-cleanpr'}},function(err,res,body){
 				cb(JSON.parse(body));
 			}) })
