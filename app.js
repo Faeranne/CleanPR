@@ -13,7 +13,7 @@ app.post('/hook', function(req,res){
 	console.log(pulls_url);
 	requests.parsePulls(pulls_url,function(pull){
 		if(pull.mergable==false){
-			requests.rebaseComment(pull._links.issue.href);
+			requests.rebaseComment(pull._links.comments.href);
 		}
 	});
 });
