@@ -28,12 +28,8 @@ var parsePulls = function(url,cb){
  */
 
 var rebaseComment = function(url){
-	console.log(url);
 	var body = {body:"Pull Request needs to be brought up to date"}
 	request({url:url, method: 'POST', headers:{"User-Agent":"github-cleanpr", "Authorization": token}, body:JSON.stringify(body)}, function(err,res,body){
-		console.log(err)
-		console.log(res)
-		console.log(body)
 	});
 };
 
