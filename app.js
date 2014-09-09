@@ -10,8 +10,9 @@ app.post('/hook', function(req,res){
 	// TODO: Only acknowledge pushes to the "Master" branch.
 	res.send(200,'{"message":"ok","result":"ok"}');
 	var pulls_url = req.body.repository.pulls_url.split('{/number}')[0]
-	console.log(pulls_url);
 	requests.parsePulls(pulls_url,function(pull){
+		console.log(pull.mergable)
+		console.log(https://api.github.com/repos/mrmakeit/github-todo-test/issues/14/comments)
 		if(pull.mergable==false){
 			requests.rebaseComment(pull._links.comments.href);
 		}
