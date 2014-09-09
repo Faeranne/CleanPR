@@ -11,7 +11,7 @@ app.post('/hook', function(req,res){
 	res.send(200,'{"message":"ok","result":"ok"}');
 	var pulls_url = req.body.repository.pulls_url.split('{/number}')[0]
 	console.log(pulls_url);
-	requests.getPulls(pulls_url,function(pull){
+	requests.parsePulls(pulls_url,function(pull){
 		if(pull.mergable==false){
 			requests.rebaseComment(pull._links.issue.href);
 		}
