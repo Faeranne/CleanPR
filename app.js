@@ -12,7 +12,7 @@ app.post('/hook', function(req,res){
 	var pulls_url = req.body.repository.pulls_url.split('{/number}')[0]
 	requests.parsePulls(pulls_url,function(pull){
 		console.log(pull.mergable)
-		if(pull.mergable==false){
+		if(pull.mergeable==false){
 			requests.rebaseComment(pull._links.comments.href);
 		}
 	});

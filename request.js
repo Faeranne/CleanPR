@@ -11,7 +11,6 @@ var token = "token "+process.env.OATH_TOKEN;
 
 var parsePulls = function(url,cb){
 	request({url:url, headers: {'User-Agent': 'github-cleanpr'}}, function(err,res,body){
-		console.log(err);
 		var pulls = JSON.parse(body);
 		pulls.forEach(function(pull,index){
 			request({url:url+"/"+pull.number, headers: {'User-Agent': 'github-cleanpr'}},function(err,res,body){
