@@ -34,9 +34,7 @@ var rebaseComment = function(url){
 	});
 };
 
-exports.parseTODOS = parseTODOS
-exports.parseCommits = parseCommits
-exports.compareTodo = compareTodo
-exports.createIssues = createIssues
+exports.parsePulls = parsePulls
+exports.rebaseComment = rebaseComment
 
 
