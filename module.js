@@ -2,6 +2,20 @@ var request = require('request');
 
 var token = "token "+process.env.OATH_TOKEN;
 
+var hook = function(req,res){
+	// TODO: Only acknowledge pushes to the "Master" branch.
+	res.send(200,'{"message":"ok","result":"ok"}');
+	if(req.body.ref!="refs/heads/master"){
+		return
+	});
+	var pulls_url = req.body.repository.pulls_url.split('{/number}')[0]
+	parsePulls(pulls_url,function(pull){
+		if(pull.mergeable==false){
+			rebaseComment(pull._links.comments.href);
+		}
+	});
+}
+
 /**
  * Fetch each pull request for the repository
  *
@@ -33,7 +47,4 @@ var rebaseComment = function(url){
 	});
 };
 
-exports.parsePulls = parsePulls
-exports.rebaseComment = rebaseComment
-
-
+exports.hook = hook
